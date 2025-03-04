@@ -2,27 +2,28 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registrar Crédito</title>
+    <title>Lista de Créditos</title>
 </head>
 <body>
-    <h1>Registrar Nuevo Crédito</h1>
-    <form action="/registrar" method="POST">
-        <label for="cliente">Cliente:</label>
-        <input type="text" id="cliente" name="cliente" required><br>
-
-        <label for="monto">Monto:</label>
-        <input type="number" id="monto" name="monto" step="0.01" required><br>
-
-        <label for="tasa_interes">Tasa de Interés:</label>
-        <input type="number" id="tasa_interes" name="tasa_interes" step="0.01" required><br>
-
-        <label for="plazo">Plazo (meses):</label>
-        <input type="number" id="plazo" name="plazo" required><br>
-
-        <label for="fecha_otorgamiento">Fecha de Otorgamiento:</label>
-        <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required><br>
-
-        <button type="submit">Registrar</button>
-    </form>
+    <h1>Créditos Registrados</h1>
+    <table border="0">
+        <tr>
+            <th>Cliente</th>
+            <th>Monto</th>
+            <th>Tasa de Interés</th>
+            <th>Plazo</th>
+            <th>Fecha de Otorgamiento</th>
+        </tr>
+        {% for credito in creditos %}
+        <tr>
+            <td>{{ credito.cliente }}</td>
+            <td>{{ credito.monto }}</td>
+            <td>{{ credito.tasa_interes }}</td>
+            <td>{{ credito.plazo }}</td>
+            <td>{{ credito.fecha_otorgamiento }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/registrar">Registrar Nuevo Crédito</a>
 </body>
 </html>
