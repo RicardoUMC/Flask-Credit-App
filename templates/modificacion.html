@@ -1,0 +1,15 @@
+{% extends './form-layout.html' %}
+
+{% block titulo %}Modificar Crédito{% endblock %}
+
+{% block titulo_body %}Modificar Crédito Existente{% endblock %}
+
+{% block accion %}/editar/{{credito.id}}{% endblock %}
+
+{% block cliente %}{{ credito.cliente }}{% endblock %}
+{% block monto %}{{ credito.monto }}{% endblock %}
+{% block tasa_interes %}{{ credito.tasa_interes }}{% endblock %}
+{% block plazo %}{{ credito.plazo }}{% endblock %}
+{% block fecha_otorgamiento %}{{ credito.fecha_otorgamiento }}{% endblock %}
+
+{% block enviar %}Modificar{% endblock %}

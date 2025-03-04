@@ -2,10 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Créditos</title>
 </head>
 <body>
     <h1>Créditos Registrados</h1>
+    {% if creditos | length < 1 %}
+    <h4>No hay ningún crédito por el momento. Por favor registre uno.</h4>
+    {% else %}
     <table border="0">
         <tr>
             <th>Cliente</th>
@@ -13,6 +17,7 @@
             <th>Tasa de Interés</th>
             <th>Plazo</th>
             <th>Fecha de Otorgamiento</th>
+            <th>Acción</th>
         </tr>
         {% for credito in creditos %}
         <tr>
@@ -21,9 +26,15 @@
             <td>{{ credito.tasa_interes }}</td>
             <td>{{ credito.plazo }}</td>
             <td>{{ credito.fecha_otorgamiento }}</td>
+            <td>
+                <a href="/editar/{{ credito.id }}">Editar</a>
+                <br>
+                <a href="/eliminar/{{ credito.id }}">Eliminar</a>
+            </td>
         </tr>
         {% endfor %}
     </table>
+    {% endif %}
     <a href="/registrar">Registrar Nuevo Crédito</a>
 </body>
 </html>

@@ -41,9 +41,39 @@ def registrar():
         db.session.add(nuevo_credito)
         db.session.commit()
 
-        return redirect('/')
+        return redirect(url_for('index'))
     else:
         return render_template("registro.html")
+
+@app.route('/editar/<int:id>', methods = ['GET', 'POST'])
+def editar(id):
+    credito = Credito.query.get_or_404(id)
+    if request.method == 'POST':
+        credito.cliente = request.form['cliente']
+        credito.monto = float(request.form['monto'])
+        credito.tasa_interes = float(request.form['tasa_interes'])
+        credito.plazo = int(request.form['plazo'])
+        fecha_otorgamiento = request.form['fecha_otorgamiento']
+        credito.fecha_otorgamiento = datetime.strptime(fecha_otorgamiento, '%Y-%m-%d').date()
+        
+        try:
+            db.session.commit()
+            return redirect(url_for('index'))
+        except:
+            return "Hubo un problema al modificar el crédito"
+
+    else:
+        return render_template('modificacion.html', credito = credito)
+
+@app.route('/eliminar/<int:id>')
+def eliminar(id):
+    credito = Credito.query.get_or_404(id)
+    try:
+        db.session.delete(credito)
+        db.session.commit()
+        return redirect(url_for('index'))
+    except:
+        return "Hubo un problema al eliminar el crédito"
 
 @app.route('/')
 def index():

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<body>
+    <h1>{% block titulo_body %}{% endblock %}</h1>
+    <form action="{% block accion %}{% endblock %}" method="POST">
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required value="{% block cliente %}{% endblock %}"><br>
+
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" name="monto" step="0.01" required value="{% block monto %}{% endblock %}"><br>
+
+        <label for="tasa_interes">Tasa de Interés:</label>
+        <input type="number" id="tasa_interes" name="tasa_interes" step="0.01" required value="{% block tasa_interes %}{% endblock %}"><br>
+
+        <label for="plazo">Plazo (meses):</label>
+        <input type="number" id="plazo" name="plazo" required value="{% block plazo %}{% endblock %}"><br>
+
+        <label for="fecha_otorgamiento">Fecha de Otorgamiento:</label>
+        <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required value="{% block fecha_otorgamiento %}{% endblock %}"><br>
+
+        <button type="submit">{% block enviar %}{% endblock %}</button>
+    </form>
+</body>
+</html>
