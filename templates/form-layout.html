@@ -12,13 +12,13 @@
         <input type="text" id="cliente" name="cliente" required value="{% block cliente %}{% endblock %}"><br>
 
         <label for="monto">Monto:</label>
-        <input type="number" id="monto" name="monto" step="0.01" required value="{% block monto %}{% endblock %}"><br>
+        <input type="number" id="monto" name="monto" step="0.01" min="0" required value="{% block monto %}{% endblock %}"><br>
 
         <label for="tasa_interes">Tasa de Interés:</label>
-        <input type="number" id="tasa_interes" name="tasa_interes" step="0.01" required value="{% block tasa_interes %}{% endblock %}"><br>
+        <input type="number" id="tasa_interes" name="tasa_interes" step="0.01" min="0" max="100" required value="{% block tasa_interes %}{% endblock %}"><br>
 
         <label for="plazo">Plazo (meses):</label>
-        <input type="number" id="plazo" name="plazo" required value="{% block plazo %}{% endblock %}"><br>
+        <input type="number" id="plazo" name="plazo" min="1" required value="{% block plazo %}{% endblock %}"><br>
 
         <label for="fecha_otorgamiento">Fecha de Otorgamiento:</label>
         <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required value="{% block fecha_otorgamiento %}{% endblock %}"><br>
