@@ -109,6 +109,7 @@ form label {
 }
 
 form input {
+    font-size: 14px;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -133,6 +134,36 @@ form a {
 
 form a:hover {
     text-decoration: none;
+}
+
+/* Estilos para los placeholders */
+input::placeholder {
+    color: #999;
+}
+
+/* Estilos para el input de tipo date */
+input[type="date"].custom-date {
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #999;
+}
+
+/* Calendario en navegadores que lo permiten */
+input[type="date"].custom-date::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+}
+
+input[type="date"].custom-date::-webkit-datetime-edit {
+    color: #999;
+}
+
+input[type="date"].custom-date::-webkit-datetime-edit-fields-wrapper {
+    background-color: #fff;
 }
 
 /* Selector de gráficas y botón */
