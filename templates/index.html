@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Créditos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Créditos Registrados</h1>
@@ -34,7 +36,27 @@
         </tr>
         {% endfor %}
     </table>
+
+    <select id="chartSelector">
+        <option value="" disabled selected>Seleccione una gráfica</option>
+        <option value="creditosChart">Total de Créditos por Cliente</option>
+        <option value="rangosChart">Distribución de Créditos por Rango de Montos</option>
+    </select>
+
+    <button id="toggleChartButton" style="display: none;">Mostrar Gráfica</button>
+
+    <div class="chart-container active" id="creditosChartContainer">
+        <canvas id="creditosChart" ></canvas>
+    </div>
+
+    <div class="chart-container" id="rangosChartContainer">
+        <canvas id="rangosChart" ></canvas>
+    </div>
+
     {% endif %}
+    
     <a href="/registrar">Registrar Nuevo Crédito</a>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
