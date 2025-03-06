@@ -1,5 +1,12 @@
 let chartInstance = null;
 
+/**
+ * The function `obtenerDatos` asynchronously fetches credit data from an API endpoint and returns the
+ * parsed JSON response, handling errors by logging them and returning an empty array.
+ * @returns The function `obtenerDatos` is returning the data fetched from the '/api/creditos' endpoint
+ * as a JSON object if the fetch is successful. If there is an error during the fetch or parsing of the
+ * response, an empty array `[]` is returned.
+ */
 async function obtenerDatos() {
     try {
         const response = await fetch('/api/creditos');
@@ -11,6 +18,13 @@ async function obtenerDatos() {
     }
 }
 
+/**
+ * The function generates a bar chart showing the total credits per client based on the provided data.
+ * @param datos - An array of objects where each object represents a credit transaction with the
+ * following properties:
+ * @returns A Chart object representing a bar chart displaying the total credits per client, based on
+ * the provided data.
+ */
 function generarGraficaCreditosPorCliente(datos) {
     const clientes = datos.map(credito => credito.cliente);
     const montos = datos.map(credito => credito.monto);
@@ -38,6 +52,15 @@ function generarGraficaCreditosPorCliente(datos) {
     });
 }
 
+/**
+ * The function `generarGraficaDistribucionPorRangos` generates a bar chart showing the distribution of
+ * credits based on different ranges of amounts.
+ * @param datos - The function `generarGraficaDistribucionPorRangos` takes an array of credit data
+ * (`datos`) as input. Each element in the `datos` array represents a credit object with a `monto`
+ * property indicating the amount of the credit.
+ * @returns A Chart.js object representing a bar chart showing the distribution of credits by range of
+ * amounts based on the input data.
+ */
 function generarGraficaDistribucionPorRangos(datos) {
     const rangos = { '0-1000': 0, '1000-5000': 0, '5000+': 0 };
 
@@ -74,6 +97,10 @@ function generarGraficaDistribucionPorRangos(datos) {
     });
 }
 
+/**
+ * The function `toggleGrafica` toggles the display of a chart container and updates the text content
+ * of a button accordingly.
+ */
 function toggleGrafica() {
     const chartContainer = document.querySelector('.chart-container.active');
     if (chartContainer && chartContainer.style.display === 'none') {
@@ -85,6 +112,10 @@ function toggleGrafica() {
     }
 }
 
+/**
+ * The function "cargarDatosYGenerarGraficas" asynchronously loads data and generates different types
+ * of charts based on user selection.
+ */
 async function cargarDatosYGenerarGraficas() {
     const datos = await obtenerDatos();
 
