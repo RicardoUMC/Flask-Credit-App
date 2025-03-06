@@ -8,54 +8,56 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Créditos Registrados</h1>
-    {% if creditos | length < 1 %}
-    <h4>No hay ningún crédito por el momento. Por favor registre uno.</h4>
-    {% else %}
-    <table border="0">
-        <tr>
-            <th>Cliente</th>
-            <th>Monto</th>
-            <th>Tasa de Interés</th>
-            <th>Plazo</th>
-            <th>Fecha de Otorgamiento</th>
-            <th>Acción</th>
-        </tr>
-        {% for credito in creditos %}
-        <tr>
-            <td>{{ credito.cliente }}</td>
-            <td>{{ credito.monto }}</td>
-            <td>{{ credito.tasa_interes }}</td>
-            <td>{{ credito.plazo }}</td>
-            <td>{{ credito.fecha_otorgamiento }}</td>
-            <td>
-                <a href="/editar/{{ credito.id }}">Editar</a>
-                <br>
-                <a href="/eliminar/{{ credito.id }}">Eliminar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <h1>Créditos Registrados</h1>
+        {% if creditos | length < 1 %}
+        <h4>No hay ningún crédito por el momento. Por favor registre uno.</h4>
+        {% else %}
+        <!-- Contenedor de créditos con Grid -->
+        <div class="creditos-grid">
+            <div class="grid-header">
+                <div>Cliente</div>
+                <div>Monto</div>
+                <div>Tasa de Interés</div>
+                <div>Plazo</div>
+                <div>Fecha de Otorgamiento</div>
+                <div>Acción</div>
+            </div>
+            {% for credito in creditos %}
+            <div class="grid-row">
+                <div>{{ credito.cliente }}</div>
+                <div>{{ credito.monto }}</div>
+                <div>{{ credito.tasa_interes }}</div>
+                <div>{{ credito.plazo }}</div>
+                <div>{{ credito.fecha_otorgamiento }}</div>
+                <div>
+                    <a href="/editar/{{ credito.id }}" class="edit">Editar</a>
+                    <br>
+                    <a href="/eliminar/{{ credito.id }}" class="delete">Eliminar</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
-    <select id="chartSelector">
-        <option value="" disabled selected>Seleccione una gráfica</option>
-        <option value="creditosChart">Total de Créditos por Cliente</option>
-        <option value="rangosChart">Distribución de Créditos por Rango de Montos</option>
-    </select>
+        <select id="chartSelector">
+            <option value="" disabled selected>Seleccione una gráfica</option>
+            <option value="creditosChart">Total de Créditos por Cliente</option>
+            <option value="rangosChart">Distribución de Créditos por Rango de Montos</option>
+        </select>
 
-    <button id="toggleChartButton" style="display: none;">Mostrar Gráfica</button>
+        <button id="toggleChartButton" style="display: none;">Mostrar Gráfica</button>
 
-    <div class="chart-container active" id="creditosChartContainer">
-        <canvas id="creditosChart" ></canvas>
+        <div class="chart-container" id="creditosChartContainer">
+            <canvas id="creditosChart"></canvas>
+        </div>
+
+        <div class="chart-container" id="rangosChartContainer">
+            <canvas id="rangosChart"></canvas>
+        </div>
+        {% endif %}
+        
+        <a href="/registrar" id=registrarButton>Registrar Nuevo Crédito</a>
     </div>
-
-    <div class="chart-container" id="rangosChartContainer">
-        <canvas id="rangosChart" ></canvas>
-    </div>
-
-    {% endif %}
-    
-    <a href="/registrar">Registrar Nuevo Crédito</a>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

@@ -7,25 +7,27 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>{% block titulo_body %}{% endblock %}</h1>
-    <form action="{% block accion %}{% endblock %}" method="POST">
-        <label for="cliente">Cliente:</label>
-        <input type="text" id="cliente" name="cliente" required value="{% block cliente %}{% endblock %}"><br>
+    <div class="container">
+        <h1>{% block titulo_body %}{% endblock %}</h1>
+        <form action="{% block accion %}{% endblock %}" method="POST">
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" name="cliente" required value="{% block cliente %}{% endblock %}">
 
-        <label for="monto">Monto:</label>
-        <input type="number" id="monto" name="monto" step="0.01" min="0" required value="{% block monto %}{% endblock %}"><br>
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" name="monto" step="0.01" min="0" required value="{% block monto %}{% endblock %}">
 
-        <label for="tasa_interes">Tasa de Interés:</label>
-        <input type="number" id="tasa_interes" name="tasa_interes" step="0.01" min="0" max="100" required value="{% block tasa_interes %}{% endblock %}"><br>
+            <label for="tasa_interes">Tasa de Interés:</label>
+            <input type="number" id="tasa_interes" name="tasa_interes" step="0.01" min="0" max="100" required value="{% block tasa_interes %}{% endblock %}">
 
-        <label for="plazo">Plazo (meses):</label>
-        <input type="number" id="plazo" name="plazo" min="1" required value="{% block plazo %}{% endblock %}"><br>
+            <label for="plazo">Plazo (meses):</label>
+            <input type="number" id="plazo" name="plazo" min="1" required value="{% block plazo %}{% endblock %}">
 
-        <label for="fecha_otorgamiento">Fecha de Otorgamiento:</label>
-        <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required value="{% block fecha_otorgamiento %}{% endblock %}"><br>
+            <label for="fecha_otorgamiento">Fecha de Otorgamiento:</label>
+            <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required value="{% block fecha_otorgamiento %}{% endblock %}">
 
-        <button type="submit">{% block enviar %}{% endblock %}</button>
-        <a href="/">Regresar</a>
-    </form>
+            <button type="submit">{% block enviar %}{% endblock %}</button>
+            <a href="/">Regresar</a>
+        </form>
+    </div>
 </body>
 </html>
