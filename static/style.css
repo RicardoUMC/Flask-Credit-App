@@ -1,12 +1,36 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-h1 {
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
     color: #333;
 }
 
+h1 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    color: #666;
+}
+
+button, a {
+    font-size: 16px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabla de créditos */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -14,29 +38,108 @@ table {
 }
 
 th, td {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #007bff;
+    color: white;
 }
 
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form a {
+    text-align: center;
+}
+
+form a:hover {
+    text-decoration: none; 
+}
+
+/* Selector de gráficas y botón */
 #chartSelector {
-    margin-bottom: 20px;
-    padding: 5px;
-    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 
+#toggleChartButton {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#toggleChartButton:hover {
+    background-color: #218838;
+}
+
+/* Contenedores de gráficas */
 .chart-container {
     display: none;
     margin-bottom: 20px;
 }
 
+.chart-container.active {
+    display: block;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Enlaces de acción */
 a {
     display: inline-block;
-    margin-top: 20px;
     padding: 10px 15px;
     background-color: #007bff;
     color: white;
@@ -46,4 +149,37 @@ a {
 
 a:hover {
     background-color: #0056b3;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    table, th, td {
+        font-size: 14px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    #chartSelector, #toggleChartButton {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+    table, th, td {
+        font-size: 12px;
+    }
+
+    form {
+        padding: 10px;
+    }
 }
