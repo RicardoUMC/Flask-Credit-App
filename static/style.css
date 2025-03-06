@@ -9,6 +9,7 @@ body {
 
 h1 {
     text-align: center;
+    color: #007bff;
 }
 
 h4 {
@@ -30,29 +31,40 @@ button, a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Tabla de créditos */
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* Grid de créditos */
+.creditos-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 0.5px solid #80808080;
 }
 
-th, td {
+.grid-header, .grid-row {
+    display: contents;
+}
+
+.grid-header > div {
+    background-color: #007bff;
+    border: 1px solid #006cdf;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.grid-row > div {
     padding: 12px;
     border: 1px solid #ddd;
-    text-align: left;
+    background-color: #fff;
 }
 
-th {
-    background-color: #007bff;
-    color: white;
-}
-
-tr:nth-child(even) {
+.grid-row:nth-child(even) > div {
     background-color: #f9f9f9;
 }
 
-tr:hover {
+.grid-row:hover > div {
     background-color: #f1f1f1;
 }
 
@@ -97,11 +109,12 @@ form a {
 }
 
 form a:hover {
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 /* Selector de gráficas y botón */
 #chartSelector {
+    font-size: 16px;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -153,8 +166,16 @@ a:hover {
 
 /* Diseño responsivo */
 @media (max-width: 768px) {
-    table, th, td {
-        font-size: 14px;
+    .creditos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-header {
+        display: none;
+    }
+
+    .grid-row > div {
+        padding: 8px;
     }
 
     form {
@@ -175,8 +196,8 @@ a:hover {
         font-size: 16px;
     }
 
-    table, th, td {
-        font-size: 12px;
+    .creditos-grid {
+        grid-template-columns: 1fr;
     }
 
     form {
