@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -14,11 +14,20 @@ class Credito(db.Model):
     plazo = db.Column(db.Integer, nullable = False)
     fecha_otorgamiento = db.Column(db.String(10), nullable = False)
 
-    def __repr__(self):
-        return '<Credito %r>' % self.id
-
-with app.app_context():
-    db.create_all()
+@app.route('/api/creditos', methods=['GET'])
+def obtener_creditos():
+    creditos = Credito.query.order_by(Credito.fecha_otorgamiento).all()
+    datos = []
+    for credito in creditos:
+        datos.append({
+            'cliente': credito.cliente,
+            'monto': credito.monto,
+            # Los siguientes datos no se utilizan en el frontend, aunque se podrían acceder
+            'tasa_interes': credito.tasa_interes,
+            'plazo': credito.plazo,
+            'fecha_otorgamiento': credito.fecha_otorgamiento
+        })
+    return jsonify(datos)
 
 @app.route('/registrar', methods=['GET', 'POST'])
 def registrar():
@@ -81,4 +90,7 @@ def index():
     return render_template('index.html', creditos = creditos)
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+
     app.run(debug = True, port = 8080)
