@@ -70,6 +70,7 @@ http://127.0.0.1:8080
 
 - **Formulario de Registro/Edición**: Permite ingresar o modificar los detalles de un crédito, como el nombre del cliente, el monto, la tasa de interés, el plazo y la fecha de otorgamiento.
 
+<img alt="Formulario" src="assets/formulario.png" width="100%"/>
 
 ## Estructura del Proyecto
 
