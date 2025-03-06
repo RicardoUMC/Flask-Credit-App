@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>{% block titulo_body %}{% endblock %}</h1>
@@ -24,6 +25,7 @@
         <input type="date" id="fecha_otorgamiento" name="fecha_otorgamiento" required value="{% block fecha_otorgamiento %}{% endblock %}"><br>
 
         <button type="submit">{% block enviar %}{% endblock %}</button>
+        <a href="/">Regresar</a>
     </form>
 </body>
 </html>
